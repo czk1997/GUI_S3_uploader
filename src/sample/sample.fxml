@@ -13,13 +13,16 @@
   <children>
     <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
       <children>
-        <TextArea fx:id="infoArea" editable="false" layoutX="14.0" layoutY="46.0" prefHeight="370.0" prefWidth="369.0" wrapText="true" />
-        <TextField fx:id="infoField" layoutX="16.0" layoutY="451.0" onMouseClicked="#infoLinster" prefHeight="34.9609375" prefWidth="369.0" text="Click me to select the file." />
-        <Button fx:id="submit" layoutX="261.0" layoutY="533.0" mnemonicParsing="false" onAction="#submitLinster" prefHeight="34.9609375" prefWidth="115.0" text="Submit" />
+        <TextArea fx:id="infoArea" editable="false" layoutX="16.0" layoutY="39.0" prefHeight="370.0" prefWidth="369.0" wrapText="true" />
+        <TextField fx:id="infoField" layoutX="8.0" layoutY="443.0" onMouseClicked="#infoLinster" prefHeight="34.9609375" prefWidth="369.0" text="Click me to select the file." />
+        <Button fx:id="submit" layoutX="262.0" layoutY="553.0" mnemonicParsing="false" onAction="#submitLinster" prefHeight="34.9609375" prefWidth="115.0" text="Submit" />
         <Label layoutX="14.0" layoutY="4.0" prefHeight="34.9609375" prefWidth="46.0" text="Info" />
-        <Label layoutX="14.0" layoutY="432.0" text="File Path" />
-        <ProgressBar fx:id="progressBar" layoutX="17.0" layoutY="486.0" prefHeight="34.9609375" prefWidth="369.0" progress="0.0" />
-            <Button fx:id="StopButton" layoutX="54.0" layoutY="533.0" mnemonicParsing="false" onAction="#stopButttonLinister" prefHeight="34.9609375" prefWidth="115.0" text="Stop" />
+        <Label layoutX="14.0" layoutY="416.0" text="File Path" />
+        <ProgressBar fx:id="progressBar" layoutX="11.0" layoutY="509.0" prefHeight="34.9609375" prefWidth="369.0" progress="0.0" />
+            <Button fx:id="StopButton" layoutX="48.0" layoutY="553.0" mnemonicParsing="false" onAction="#stopButttonLinister" prefHeight="34.9609375" prefWidth="115.0" text="Stop" />
+            <Label layoutX="16.0" layoutY="482.0" text="Progress:" />
+            <Label fx:id="percentLabel" layoutX="114.0" layoutY="482.0" text="0.00" />
+            <Label layoutX="151.0" layoutY="482.0" text="\%/100%" />
       </children>
     </Pane>
   </children>

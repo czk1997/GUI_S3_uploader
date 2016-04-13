@@ -25,6 +25,7 @@ import java.awt.datatransfer.Transferable;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 
@@ -39,12 +40,16 @@ public class Controller extends Application implements Initializable {
     @FXML
     private ProgressBar progressBar = new ProgressBar();
     @FXML
-    private Button StopButton=new Button();
-    public Thread thread=new Thread();
+    private Button StopButton = new Button();
+    @FXML
+    private static Label percentLabel = new Label();
+
+    public Thread thread = new Thread();
+    public static DecimalFormat df = new DecimalFormat("#.00");
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-
+        StopButton.setDisable(true);
     }
 
     public void submitLinster() {
@@ -73,6 +78,9 @@ public class Controller extends Application implements Initializable {
                     final AmazonS3[] s3client = {new AmazonS3Client(new ProfileCredentialsProvider())};
                     PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName, keyName, file);
                     putObjectRequest.setGeneralProgressListener(new progressnow());
+                    submit.setDisable(true);
+                    infoField.setDisable(true);
+                    StopButton.setDisable(false);
                     s3client[0].putObject(putObjectRequest);
                     infoArea.appendText("Update Successful" + "\n");
                     AccessControlList acl = new AccessControlList();
@@ -110,15 +118,24 @@ public class Controller extends Application implements Initializable {
             }
         };
         //progressBar.progressProperty().bind(task.progressProperty());
-        thread=new Thread(task);
+        thread = new Thread(task);
         thread.start();
 
 
     }
-    public void stopButttonLinister(){
-        if(thread.isAlive()){
+    public static void updatelabel(double percent){
+        percentLabel.setText(df.format(percent));
+    }
+
+    public void stopButttonLinister() {
+        if (thread.isAlive()) {
             thread.stop();
         }
+        StopButton.setDisable(true);
+        submit.setDisable(false);
+        infoField.setDisable(false);
+        infoArea.appendText("Update Failed!\nReason: User Canceled.\n");
+
     }
 
 
@@ -126,7 +143,6 @@ public class Controller extends Application implements Initializable {
         final long[] sum = {0};
         final long[] total = {0};
         final double[] percent = {0};
-
 
         @Override
         public void progressChanged(ProgressEvent progressEvent) {
@@ -140,12 +156,12 @@ public class Controller extends Application implements Initializable {
             percent[0] = (double) sum[0] / (double) total[0];
             //System.out.println(percent[0]);
             update(percent[0]);
+            Controller.updatelabel(percent[0]*100);
         }
 
         public void update(double percent) {
             System.out.println(percent);
             progressBar.setProgress(percent);
-
         }
     }
 }
