@@ -15,6 +15,7 @@ import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.effect.BlendMode;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -42,7 +43,7 @@ public class Controller extends Application implements Initializable {
     @FXML
     private Button StopButton = new Button();
     @FXML
-    private static Label percentLabel = new Label();
+    private  Label percentLabel = new Label();
 
     public Thread thread = new Thread();
     public static DecimalFormat df = new DecimalFormat("#.00");
@@ -50,6 +51,7 @@ public class Controller extends Application implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         StopButton.setDisable(true);
+
     }
 
     public void submitLinster() {
@@ -123,7 +125,7 @@ public class Controller extends Application implements Initializable {
 
 
     }
-    public static void updatelabel(double percent){
+    public void updatelabel(double percent){
         percentLabel.setText(df.format(percent));
     }
 
@@ -156,7 +158,7 @@ public class Controller extends Application implements Initializable {
             percent[0] = (double) sum[0] / (double) total[0];
             //System.out.println(percent[0]);
             update(percent[0]);
-            Controller.updatelabel(percent[0]*100);
+            updatelabel(percent[0]*100);
         }
 
         public void update(double percent) {

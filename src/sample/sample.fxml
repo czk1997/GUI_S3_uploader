@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.geometry.Insets?>
@@ -18,7 +19,7 @@
         <Button fx:id="submit" layoutX="262.0" layoutY="553.0" mnemonicParsing="false" onAction="#submitLinster" prefHeight="34.9609375" prefWidth="115.0" text="Submit" />
         <Label layoutX="14.0" layoutY="4.0" prefHeight="34.9609375" prefWidth="46.0" text="Info" />
         <Label layoutX="14.0" layoutY="416.0" text="File Path" />
-        <ProgressBar fx:id="progressBar" layoutX="11.0" layoutY="509.0" prefHeight="34.9609375" prefWidth="369.0" progress="0.0" />
+        <ProgressBar fx:id="progressBar" layoutX="11.0" layoutY="509.0" prefHeight="34.9609375" prefWidth="369.0" progress="0.0" style="-fx-background-color: #00FF00;" />
             <Button fx:id="StopButton" layoutX="48.0" layoutY="553.0" mnemonicParsing="false" onAction="#stopButttonLinister" prefHeight="34.9609375" prefWidth="115.0" text="Stop" />
             <Label layoutX="16.0" layoutY="482.0" text="Progress:" />
             <Label fx:id="percentLabel" layoutX="114.0" layoutY="482.0" text="0.00" />
